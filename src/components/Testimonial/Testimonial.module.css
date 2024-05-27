@@ -1,0 +1,14 @@
+.testimonial {
+    background: var(--neutral-gray);
+    padding-block: var(--space-xxxl);
+}
+
+.testimonialWrapper {
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: var(--space-xxl);
+}
+
+.testimonialImage {
+    border-radius: var(--border-radius);
+}

@@ -1,52 +1,73 @@
 :root {
-  --max-width: 1100px;
+    --neutral-white: #fff;
+    --neutral-gray: #f4f5f7;
+    --primary: #fdb933;
 
-  --primary: #FDB933;
-  
-  --background: #FFF;
-  --text: #333;
-  --subtitle: #D99F2C;
-  --link: #008B90;
-  --link-hover: #047478;
-  --separator: #C8C8CC;
+    --background: var(--neutral-white);
+    --text: #333;
+    --subtitle: #d99f2c;
+    --link: #008b90;
+    --link-hover: #047478;
+    --separator: #c8c8cc;
 
-  --font: sans-serif;
-  --font-size: 20px;
+    --font: sans-serif;
+    --font-size: 20px;
+    --hero-size: 80px;
 
-  --border-radius: 20px;
+    --border-radius: 20px;
 
-  --space-xxs: 4px;
-  --space-xs: 8px;
-  --space-x: 12px;
-  --space-m: 16px;
-  --space-l: 24px;
-  --space-xl: 32px;
-  --space-xxl: 40px;
-  --space-xxxl: 80px
+    --space-xxs: 4px;
+    --space-xs: 8px;
+    --space-s: 12px;
+    --space-m: 16px;
+    --space-l: 24px;
+    --space-xl: 32px;
+    --space-xxl: 40px;
+    --space-xxxl: 80px;
+
+    --container: 1328px;
+    --container-space: var(--space-m);
 }
 
 html {
-  font-family: var(--font);
-  font-size: var(--font-size);
+    font-family: var(--font);
+    font-size: var(--font-size);
 }
 
 body {
-  color: var(--text);
-  background: var(--background);
+    color: var(--text);
+    background: var(--background);
+}
+
+p {
+    line-height: 1.5em;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.5em;
+}
+
+ul,
+ol {
+    padding-left: var(--space-m);
+    line-height: 1.5em;
 }
 
 a {
-  color: var(--link);
-  text-decoration: none;
-  &:hover {
-      color: var(--link-hover);
-  }
+    color: var(--link);
+    text-decoration: none;
+    &:hover {
+        color: var(--link-hover);
+        text-decoration: underline;
+    }
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 svg,
@@ -54,16 +75,59 @@ img {
     vertical-align: middle;
 }
 
-button, input, select, textarea {
-  max-width: 100%;
-  font: inherit;
-  letter-spacing: inherit;
-  word-spacing: inherit;
+button,
+input,
+select,
+textarea {
+    max-width: 100%;
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    appearance: none;
 }
 
+hr {
+    height: 1px;
+    background: var(--separator);
+    border: none;
+}
 
-@media print {
-  body {
-    font-size: 8pt;
-  }
+.container {
+    width: 100%;
+    max-width: var(--container);
+    padding-inline: var(--container-space);
+    margin-inline: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.link-icon {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-xxs);
+    vertical-align: top;
+}
+
+$spaces: (
+    "xxs": var(--space-xxs),
+    "xs": var(--space-xs),
+    "s": var(--space-s),
+    "m": var(--space-m),
+    "l": var(--space-l),
+    "xl": var(--space-xl),
+    "xxl": var(--space-xxl),
+    "xxxl": var(--space-xxxl),
+);
+
+@each $key, $value in $spaces {
+    .margin-bottom-#{$key},
+    .mb-#{$key} {
+        margin-bottom: $value;
+    }
+    .margin-top-#{$key},
+    .mt-#{$key} {
+        margin-top: $value;
+    }
 }

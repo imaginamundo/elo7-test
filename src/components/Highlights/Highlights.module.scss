@@ -1,0 +1,32 @@
+.highlights {
+    background: #fff3db;
+    padding-block: var(--space-xxxl);
+}
+
+.highlightsWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-m);
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-l);
+}
+
+.highlightImageBackground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    background: var(--primary);
+    border-radius: 50%;
+    margin-inline: auto;
+}
+
+.highlightImage {
+    background: tomato;
+}

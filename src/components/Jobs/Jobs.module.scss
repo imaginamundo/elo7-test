@@ -1,0 +1,21 @@
+.jobsHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.jobs {
+    padding: 0;
+}
+
+.job {
+    list-style: none;
+    + .job {
+        border-top: 1px solid var(--separator);
+    }
+}
+
+.jobLink {
+    display: flex;
+    justify-content: space-between;
+    padding-block: var(--space-l);
+}

@@ -4,15 +4,29 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Unit Tests
+
+To run unit tests you can run:
+
+```bash
+npm run test
+```
+
+To see more information about unit tests on this application visit [Vitest Documentation](https://vitest.dev/guide/).
+
+## End to End (E2E) Tests
+
+To run end to end tests you can run:
+
+```bash
+npm run test:e2e
+```
+
+To see more information about end to end tests on this application visit [Vitest Documentation](https://vitest.dev/guide/).
 
 ## Tech
 

@@ -1,0 +1,14 @@
+.sliderImages {
+    display: flex;
+    gap: var(--space-m);
+    width: 100%;
+    max-width: var(--container);
+    padding-inline: var(--container-space);
+    margin-inline: auto;
+    overflow-x: auto;
+}
+
+.sliderImage {
+    background: tomato;
+    border-radius: var(--border-radius);
+}
