@@ -4,7 +4,9 @@ import log from "@/utils/log";
 export default async function request<ResponseType>(
   url: string,
   config: RequestInit = {
-    signal: AbortSignal.timeout(process.env.NEXT_PUBLIC_REQUEST_TIMEOUT),
+    signal: AbortSignal.timeout(
+      process.env.NEXT_PUBLIC_REQUEST_TIMEOUT || 3000,
+    ),
   },
 ): Promise<ResponseType> {
   const response = await fetch(url, config);
