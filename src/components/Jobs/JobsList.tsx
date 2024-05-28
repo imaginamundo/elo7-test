@@ -98,13 +98,17 @@ export default function JobsList({
         );
       })}
       {!Object.keys(parsedJobs).length && (
-        <p>
+        <p className="text-center">
           Nenhuma vaga encontrada.{" "}
           <Button onClick={() => setFilter("")}>Limpar filtro {filter}</Button>
         </p>
       )}
       {unparsedJobs.jobs.length < unparsedJobs.total && (
-        <Button onClick={loadMore}>Carregar mais…</Button>
+        <div className="text-center mt-l">
+          <Button onClick={loadMore} loading={loading}>
+            Carregar mais…
+          </Button>
+        </div>
       )}
     </>
   );

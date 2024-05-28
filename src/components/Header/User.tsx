@@ -7,7 +7,7 @@ import styles from "./User.module.scss";
 export default function Use() {
   return (
     <div className={styles.user}>
-      <Button>
+      <Button variant="subtle">
         <ShoppingCart />
       </Button>
       <Link href="/" className={styles.login}>

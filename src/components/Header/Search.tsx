@@ -19,7 +19,7 @@ export default function Search() {
         placeholder="Procure por x"
         className={styles.searchInput}
       />
-      <Button className={styles.searchButton}>
+      <Button className={styles.searchButton} variant="subtle">
         <SearchIcon />
       </Button>
     </form>

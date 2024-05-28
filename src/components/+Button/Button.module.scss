@@ -2,12 +2,18 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: var(--input-padding);
+    padding-inline: 0.8em;
     height: var(--input-height);
     border-radius: var(--input-border-radius);
     cursor: pointer;
     &:focus:focus-visible {
         outline: 2px solid var(--primary-opacity);
+    }
+    &:disabled,
+    &[disabled] {
+        pointer-events: none;
+        background: var(--neutral-gray);
+        border-color: var(--neutral-gray);
     }
 }
 
@@ -18,4 +24,16 @@
 
 .buttonSubtle {
     color: inherit;
+    border: 1px solid transparent;
+    background: var(--neutral-white);
+    transition: background-color 0.1s ease-in-out;
+    &:hover {
+        background: var(--primary-opacity);
+        transition: background-color 0.1s ease-in-out;
+    }
+}
+
+.loadingState {
+    opacity: 0.6;
+    pointer-events: none;
 }

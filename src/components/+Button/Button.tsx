@@ -11,7 +11,7 @@ const buttonVariants = cva(styles.button, {
       subtle: styles.buttonSubtle,
     },
     loading: {
-      true: styles.loading,
+      true: styles.loadingState,
     },
   },
   defaultVariants: {
@@ -28,11 +28,15 @@ export type ButtonProps = {
 export default function Button({
   children,
   className,
+  loading,
   variant,
   ...props
 }: ButtonProps) {
   return (
-    <button {...props} className={clsx(buttonVariants({ variant, className }))}>
+    <button
+      {...props}
+      className={clsx(buttonVariants({ variant, loading, className }))}
+    >
       {children}
     </button>
   );
