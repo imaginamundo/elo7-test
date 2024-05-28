@@ -45,9 +45,9 @@ const heroProps: HeroProps = {
 
 const testimonialProps: TestimonialProps = {
   image: {
-    src: "/elo7-logo.svg",
-    width: 100,
-    height: 100,
+    src: "/page-jobs/working-woman.png",
+    width: 644,
+    height: 264,
     alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
   },
   title: "Palavra da vendedora",

@@ -1,0 +1,39 @@
+.footer {
+    display: grid;
+    gap: var(--space-xxl);
+    grid-template-columns: 1fr 2fr;
+}
+
+.thirdParty {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+}
+
+.thirdPartyImage {
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.thirdPartyText {
+    font-size: 0.75em;
+}
+
+.footerNav {
+    display: grid;
+    gap: var(--space-m);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.footerNavList {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footerNavTitle {
+    font-size: 0.8em;
+}
+
+.footerNavItem {
+    font-size: 0.75em;
+}

@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 
+import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import "./globals.scss";
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
