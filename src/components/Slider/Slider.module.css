@@ -9,7 +9,7 @@
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     padding-inline: calc(
-        ((100% - var(--container)) / 2) - (var(--container-space) * 2)
+        ((100% - var(--container-without-space)) / 2) - var(--container-space)
     );
     &::-webkit-scrollbar {
         display: none;
@@ -17,7 +17,6 @@
 }
 
 .sliderImage {
-    background: tomato;
     border-radius: var(--border-radius);
     scroll-snap-align: center;
     width: 320px;

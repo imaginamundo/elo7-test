@@ -15,6 +15,7 @@
     --hero-size: 80px;
 
     --border-radius: 20px;
+    --s-border-radius: 8px;
 
     --space-xxs: 4px;
     --space-xs: 8px;
@@ -25,7 +26,10 @@
     --space-xxl: 40px;
     --space-xxxl: 80px;
 
-    --container: 1328px;
+    --container: calc(
+        var(--container-without-space) + (var(--container-space) * 2)
+    );
+    --container-without-space: 1328px;
     --container-space: var(--space-m);
 }
 
@@ -68,6 +72,7 @@ a {
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 svg,

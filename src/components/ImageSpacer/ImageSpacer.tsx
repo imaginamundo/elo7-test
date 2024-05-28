@@ -13,7 +13,7 @@ export default function ImageSpacer({
   return (
     <div
       className={clsx(className, styles.imageSpacer)}
-      style={{ background: background }}
+      style={{ background: background, backgroundSize: "cover" }}
     />
   );
 }

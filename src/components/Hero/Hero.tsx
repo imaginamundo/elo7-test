@@ -22,7 +22,10 @@ export default function Hero({
     <div className={styles.hero}>
       <div
         className={styles.heroWrapper}
-        style={{ background: background || "var(--primary)" }}
+        style={{
+          background: background || "var(--primary)",
+          backgroundSize: "cover",
+        }}
       >
         <div className="container">
           <h1 className={clsx("text-center", styles.title)}>{title}</h1>

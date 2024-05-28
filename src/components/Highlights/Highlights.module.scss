@@ -6,7 +6,15 @@
 .highlightsWrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-m);
+}
+
+@media (max-width: 768px) {
+    .highlightsWrapper {
+        grid-template-columns: 1fr;
+    }
 }
 
 .highlight {
@@ -25,8 +33,4 @@
     background: var(--primary);
     border-radius: 50%;
     margin-inline: auto;
-}
-
-.highlightImage {
-    background: tomato;
 }
