@@ -8,7 +8,7 @@ import styles from "./Search.module.scss";
 export default function Search() {
   return (
     <form className={styles.search}>
-      <Select name="kind">
+      <Select name="kind" className={styles.kindSelect}>
         <option>Produtos</option>
         <option>Lojas e marcas</option>
         <option>Materiais</option>
@@ -19,7 +19,7 @@ export default function Search() {
         placeholder="Procure por x"
         className={styles.searchInput}
       />
-      <Button>
+      <Button className={styles.searchButton}>
         <SearchIcon />
       </Button>
     </form>

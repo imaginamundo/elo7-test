@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { ChevronDown } from "lucide-react";
 import styles from "./Select.module.scss";
 import clsx from "clsx";
 
