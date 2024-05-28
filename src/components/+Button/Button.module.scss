@@ -1,0 +1,21 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--input-padding);
+    height: var(--input-height);
+    border-radius: var(--input-border-radius);
+    cursor: pointer;
+    &:focus:focus-visible {
+        outline: 2px solid var(--primary-opacity);
+    }
+}
+
+.buttonDefault {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.buttonSubtle {
+    color: inherit;
+}

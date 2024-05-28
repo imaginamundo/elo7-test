@@ -17,11 +17,13 @@ import Button from "../+Button/Button";
 export default function JobsList({
   jobs,
   filter,
+  setFilter,
   page,
   setPage,
 }: {
   jobs: GetJobsResponse;
   filter: string;
+  setFilter: Dispatch<SetStateAction<string>>;
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
 }) {
@@ -29,6 +31,7 @@ export default function JobsList({
   const [parsedJobs, setParsedJobs] = useState<ParsedJobs>(
     parseJobs(jobs, filter),
   );
+  const [loading, setLoading] = useState(false);
 
   const updateFilter = useCallback(
     (filter = "", unparsedJobs: GetJobsResponse) => {
@@ -44,10 +47,12 @@ export default function JobsList({
   if ("message" in jobs) return <p>Erro ao buscar vagas :(</p>;
 
   const loadMore = async () => {
+    setLoading(true);
     const newJobs = await getJobs({ page: page + 1 });
 
     if ("message" in newJobs) {
       console.log("Ocorreu um erro ao tentar carregar mais");
+      setLoading(false);
       return;
     }
 
@@ -56,6 +61,7 @@ export default function JobsList({
 
     setUnparsedJobs(newJobs);
     setParsedJobs(parseJobs(newJobs));
+    setLoading(false);
   };
 
   return (
@@ -91,6 +97,12 @@ export default function JobsList({
           </Fragment>
         );
       })}
+      {!Object.keys(parsedJobs).length && (
+        <p>
+          Nenhuma vaga encontrada.{" "}
+          <Button onClick={() => setFilter("")}>Limpar filtro {filter}</Button>
+        </p>
+      )}
       {unparsedJobs.jobs.length < unparsedJobs.total && (
         <Button onClick={loadMore}>Carregar mais…</Button>
       )}

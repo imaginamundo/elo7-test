@@ -2,6 +2,7 @@
     --neutral-white: #fff;
     --neutral-gray: #f4f5f7;
     --primary: #fdb933;
+    --primary-opacity: #fdb93345;
 
     --background: var(--neutral-white);
     --text: #333;
@@ -15,7 +16,6 @@
     --hero-size: 80px;
 
     --border-radius: 20px;
-    --s-border-radius: 8px;
 
     --space-xxs: 4px;
     --space-xs: 8px;
@@ -25,6 +25,12 @@
     --space-xl: 32px;
     --space-xxl: 40px;
     --space-xxxl: 80px;
+
+    --input-height: 48px;
+    --input-padding: 12px;
+    --input-border-radius: 8px;
+    --input-border: 1px solid #c8c8c8;
+    --input-placeholder: #c8c8cc;
 
     --container: calc(
         var(--container-without-space) + (var(--container-space) * 2)

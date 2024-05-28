@@ -21,12 +21,19 @@ export default function Jobs({ jobs }: { jobs: GetJobsResponse }) {
         <Input
           value={filter}
           type="search"
+          placeholder="Nome da vaga…"
           onChange={(e) => {
             setFilter(e.target.value);
           }}
         />
       </div>
-      <JobsList jobs={jobs} filter={filter} page={page} setPage={setPage} />
+      <JobsList
+        jobs={jobs}
+        filter={filter}
+        setFilter={setFilter}
+        page={page}
+        setPage={setPage}
+      />
     </div>
   );
 }

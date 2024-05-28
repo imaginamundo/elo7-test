@@ -1,0 +1,16 @@
+.input {
+    padding: var(--input-padding);
+    height: var(--input-height);
+    border-radius: var(--input-border-radius);
+    border: var(--input-border);
+    font-size: 0.8em;
+    &::placeholder {
+        color: var(--input-placeholder);
+    }
+    &:-ms-input-placeholder {
+        color: var(--input-placeholder);
+    }
+    &:focus:focus-visible {
+        outline: 2px solid var(--primary-opacity);
+    }
+}
