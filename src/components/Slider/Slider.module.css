@@ -1,14 +1,31 @@
 .sliderImages {
-    display: flex;
-    gap: var(--space-m);
-    width: 100%;
-    max-width: var(--container);
-    padding-inline: var(--container-space);
-    margin-inline: auto;
+    display: grid;
+    gap: var(--container-space);
+    grid-column: 1 / -1;
+    grid-auto-flow: column;
     overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    padding-inline: calc(
+        ((100% - var(--container)) / 2) - (var(--container-space) * 2)
+    );
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .sliderImage {
     background: tomato;
     border-radius: var(--border-radius);
+    scroll-snap-align: center;
+    width: 320px;
+    height: 183px;
+    &:first-child {
+        margin-left: 16px;
+    }
+    &:last-child {
+        margin-right: 16px;
+    }
 }

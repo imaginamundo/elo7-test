@@ -22,7 +22,7 @@ export default function Home() {
         <Testimonial {...testimonialProps} />
         <Slider {...sliderProps} />
         <Highlights {...highlightProps} />
-        <ImageSpacer {...imageSpacerProps} />
+        <ImageSpacer {...imageSpacerProps} className="negative-mt-xxxl" />
         <Jobs />
       </article>
     </main>
@@ -59,40 +59,28 @@ const sliderProps: SliderProps = {
   title: "Conheça nosso time fora de série",
   images: [
     {
-      src: "/elo7-logo.svg",
-      width: 100,
-      height: 100,
-      alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
+      src: "/page-jobs/slider/1.png",
+      width: 320,
+      height: 183,
+      alt: "Mulher ruiva com os cotobelos sobre a mesa num escritório",
     },
     {
-      src: "/elo7-logo.svg",
-      width: 100,
-      height: 100,
-      alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
+      src: "/page-jobs/slider/2.png",
+      width: 320,
+      height: 183,
+      alt: "Homem de cabelos castanhos e barda utilizando um notebook",
     },
     {
-      src: "/elo7-logo.svg",
-      width: 100,
-      height: 100,
-      alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
+      src: "/page-jobs/slider/3.png",
+      width: 320,
+      height: 183,
+      alt: "Mulher num escritório segurando um notebook",
     },
     {
-      src: "/elo7-logo.svg",
-      width: 100,
-      height: 100,
-      alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
-    },
-    {
-      src: "/elo7-logo.svg",
-      width: 100,
-      height: 100,
-      alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
-    },
-    {
-      src: "/elo7-logo.svg",
-      width: 100,
-      height: 100,
-      alt: "Artista mulher trabalhando em oficina em uma mesa de madeira",
+      src: "/page-jobs/slider/4.png",
+      width: 320,
+      height: 183,
+      alt: "Homem de barba e roupas claras num escritório",
     },
   ],
 };

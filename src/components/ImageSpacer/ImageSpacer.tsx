@@ -1,11 +1,19 @@
+import clsx from "clsx";
 import styles from "./ImageSpacer.module.scss";
 
 export type ImageSpacerProps = {
   background: string;
+  className?: string;
 };
 
-export default function ImageSpacer({ background }: ImageSpacerProps) {
+export default function ImageSpacer({
+  background,
+  className,
+}: ImageSpacerProps) {
   return (
-    <div className={styles.imageSpacer} style={{ background: background }} />
+    <div
+      className={clsx(className, styles.imageSpacer)}
+      style={{ background: background }}
+    />
   );
 }

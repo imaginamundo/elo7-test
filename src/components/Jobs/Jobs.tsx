@@ -1,3 +1,5 @@
+"use client";
+
 import Input from "@/components/+Input/Input";
 
 import styles from "./Jobs.module.scss";
