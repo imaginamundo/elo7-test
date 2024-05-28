@@ -8,7 +8,7 @@ import styles from "./Footer.module.scss";
 export default function Footer() {
   return (
     <footer className={clsx("container mt-xxxl mb-xxxl", styles.footer)}>
-      <div>
+      <div className={styles.thirdParties}>
         {thirdParties.map((item, index) => {
           return (
             <div key={`third-party-${index}`} className={styles.thirdParty}>

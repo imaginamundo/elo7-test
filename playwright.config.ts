@@ -5,8 +5,6 @@ dotenv.config({
   path: ".env.development",
 });
 
-console.log({ baseUrl: process.env.BASE_URL });
-
 export default defineConfig({
   testDir: "./tests-e2e",
   fullyParallel: true,

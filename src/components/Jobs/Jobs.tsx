@@ -1,46 +1,32 @@
 "use client";
 
 import Input from "@/components/+Input/Input";
+import JobsList from "./JobsList";
+
+import { useState } from "react";
+
+import type { GetJobsResponse } from "@/bff/jobs";
 
 import styles from "./Jobs.module.scss";
-import Link from "next/link";
+import clsx from "clsx";
 
-export default function Jobs() {
+export default function Jobs({ jobs }: { jobs: GetJobsResponse }) {
+  const [page, setPage] = useState(0);
+  const [filter, setFilter] = useState("");
+
   return (
     <div className="container">
-      <div className={styles.jobsHeader}>
+      <div className={clsx("mb-xl", styles.jobsHeader)}>
         <h2 id="vagas">Vagas em aberto</h2>
-        <Input />
+        <Input
+          value={filter}
+          type="search"
+          onChange={(e) => {
+            setFilter(e.target.value);
+          }}
+        />
       </div>
-      <ul className={styles.jobs}>
-        {jobsMock.map((job) => {
-          return (
-            <li key={`job-${job.title}`} className={styles.job}>
-              <Link href="#" className={styles.jobLink}>
-                {job.title}
-                <span>{job.location}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <JobsList jobs={jobs} filter={filter} page={page} setPage={setPage} />
     </div>
   );
 }
-
-const jobsMock = [
-  {
-    title: "especialista de fp&a",
-    type: "financeiro",
-    level: "especialista",
-    location: "são paulo, sp, brasil",
-    is_active: true,
-  },
-  {
-    title: "estágio em riscos e controles internos",
-    type: "controles internos",
-    level: "estágio",
-    location: "são paulo, sp, brasil",
-    is_active: true,
-  },
-];

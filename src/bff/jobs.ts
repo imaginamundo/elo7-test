@@ -1,3 +1,5 @@
+"use server";
+
 import request from "@/utils/request";
 import { ResponseError } from "@/utils/error";
 
@@ -11,62 +13,80 @@ type JobsResponse = {
   }[];
 };
 
-export async function getJobs(): Promise<GetJobsResponse> {
+const DEFAULT_PAGE_SIZE = 5;
+
+export async function getJobs({
+  page = 0,
+  limit = DEFAULT_PAGE_SIZE,
+} = {}): Promise<GetJobsResponse> {
   let jobs;
   try {
-    jobs = await request<JobsResponse>(process.env.JOBS_ENDPOING);
+    jobs = (await request<JobsResponse>(process.env.JOBS_ENDPOING)).jobs;
   } catch (err) {
     if (err instanceof ResponseError) {
-      return { message: err.message, status: err.status };
+      return {
+        jobs: [],
+        page: 0,
+        total: 0,
+        message: err.message,
+        status: err.status,
+      };
     }
-    console.log(err);
-    return { message: "Something unexpected happened" };
+    return {
+      jobs: [],
+      page: 0,
+      total: 0,
+      message: "Something unexpected happened",
+    };
   }
-  return parseJobs(jobs);
+
+  let total = 0;
+  for (let i = 0; i < jobs.length; i++) {
+    if (jobs[i].is_active) total += 1;
+  }
+
+  jobs = sortJobs(jobs);
+  jobs = paginateJobs({ jobs, page, limit });
+
+  return {
+    jobs,
+    page,
+    limit,
+    total,
+  };
 }
 
-type GetJobsResponse =
+export type GetJobsResponse =
   | {
+      jobs: JobsResponse["jobs"];
+      page: number;
+      limit: number;
+      total: number;
+    }
+  | {
+      jobs: [];
+      page: number;
+      total: number;
       message: string;
       status?: number;
-    }
-  | ParsedJobs;
+    };
 
-function parseJobs({ jobs }: JobsResponse): ParsedJobs {
-  const parsedJobs: ParsedJobs = {};
-
-  if (!jobs) return parsedJobs;
-
-  for (let i = 0; i < jobs.length; i++) {
-    if (!jobs[i].is_active) continue;
-
-    const type = jobs[i].type;
-    if (!parsedJobs[type]) parsedJobs[type] = [];
-
-    parsedJobs[type].push({
-      title: jobs[i].title,
-      ...parseLocation(jobs[i].location),
-    });
-  }
-
-  return parsedJobs;
+function paginateJobs({
+  jobs,
+  page,
+  limit,
+}: {
+  jobs: JobsResponse["jobs"];
+  page: number;
+  limit: number;
+}) {
+  const start = page * limit;
+  const end = start + limit;
+  return jobs.slice(start, end);
 }
 
-type ParsedJobs = {
-  [key: string]: ({
-    title: string;
-  } & ParsedLocation)[];
-};
-
-function parseLocation(location?: string): ParsedLocation {
-  if (!location) return { remote: true };
-  const [city, _, country] = location.split(",");
-
-  return { city: city.trim(), country: country.trim(), remote: false };
+function sortJobs(jobs: JobsResponse["jobs"]) {
+  return jobs.sort((a, b) => {
+    return a.type.localeCompare(b.type);
+  });
 }
-
-type ParsedLocation = {
-  city?: string;
-  country?: string;
-  remote: boolean;
-};

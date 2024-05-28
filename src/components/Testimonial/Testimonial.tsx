@@ -24,7 +24,9 @@ export default function Testimonial({
         </figure>
         <div>
           <h2>{title}</h2>
-          <h3 className="mb-m">{subtitle}</h3>
+          <h3 className={clsx("mb-m", styles.testimonialSubtitle)}>
+            {subtitle}
+          </h3>
           <p>{testimonial}</p>
         </div>
       </div>

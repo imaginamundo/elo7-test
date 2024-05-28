@@ -1,0 +1,26 @@
+.jobs {
+    padding: 0;
+}
+
+.job {
+    list-style: none;
+    + .job {
+        border-top: 1px solid var(--separator);
+    }
+}
+
+.jobCategory {
+    text-transform: capitalize;
+}
+
+.jobLink {
+    display: flex;
+    justify-content: space-between;
+    padding-block: var(--space-l);
+    text-transform: capitalize;
+}
+
+.jobLocation {
+    color: var(--text);
+    text-transform: capitalize;
+}

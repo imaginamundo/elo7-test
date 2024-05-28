@@ -12,3 +12,7 @@
 .testimonialImage {
     border-radius: var(--border-radius);
 }
+
+.testimonialSubtitle {
+    color: var(--subtitle);
+}

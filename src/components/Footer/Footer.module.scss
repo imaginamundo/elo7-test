@@ -4,6 +4,12 @@
     grid-template-columns: 1fr 2fr;
 }
 
+.thirdParties {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
 .thirdParty {
     display: flex;
     align-items: center;

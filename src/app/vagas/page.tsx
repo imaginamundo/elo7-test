@@ -12,9 +12,13 @@ import ImageSpacer, {
 } from "@/components/ImageSpacer/ImageSpacer";
 import Jobs from "@/components/Jobs/Jobs";
 
+import { getJobs } from "@/bff/jobs";
+
 import styles from "./page.module.scss";
 
-export default function Home() {
+export default async function Home() {
+  const jobs = await getJobs();
+
   return (
     <main>
       <article className={styles.gaps}>
@@ -23,7 +27,7 @@ export default function Home() {
         <Slider {...sliderProps} />
         <Highlights {...highlightProps} />
         <ImageSpacer {...imageSpacerProps} className="negative-mt-xxxl" />
-        <Jobs />
+        <Jobs jobs={jobs} />
       </article>
     </main>
   );
