@@ -38,9 +38,9 @@ To see more information about end to end tests on this application visit [Vitest
 ## To do
 
 - [ ] Setup CSP Headers;
-- [ ] BFF for jobs API;
+- [x] BFF for jobs API;
 - [ ] Cache jobs API;
-- [ ] Layout for page;
+- [x] Layout for page;
 - [ ] Setup Error pages;
 - [ ] Setup 404 page;
 - [ ] Setup sentry;
