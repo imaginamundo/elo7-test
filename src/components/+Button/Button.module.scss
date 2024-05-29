@@ -1,7 +1,4 @@
 .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     padding-inline: 0.8em;
     height: var(--input-height);
     border-radius: var(--input-border-radius);
@@ -18,23 +15,57 @@
     }
 }
 
+.buttonContent {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xxs);
+}
+
 .buttonDefault {
-    background: var(--primary);
-    border: 1px solid var(--primary);
+    background: var(--link);
+    border: 1px solid var(--link);
+    color: var(--neutral-white);
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+        background: var(--link-hover);
+        transition: background-color 0.2s ease-in-out;
+    }
 }
 
 .buttonSubtle {
     color: inherit;
     border: 1px solid transparent;
     background: var(--neutral-white);
-    transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     &:hover {
         background: var(--primary-opacity);
-        transition: background-color 0.1s ease-in-out;
+        transition: background-color 0.2s ease-in-out;
     }
 }
 
 .loadingState {
+    position: relative;
     opacity: 0.6;
     pointer-events: none;
+    .buttonContent {
+        opacity: 0.4;
+    }
+    .loader {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        animation: spin 1s infinite linear;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

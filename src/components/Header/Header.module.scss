@@ -16,6 +16,7 @@
     grid-template-areas: "logo search user";
     flex-wrap: wrap;
     column-gap: var(--space-xxxl);
+    row-gap: var(--space-xs);
     justify-content: space-between;
 }
 

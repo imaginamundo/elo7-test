@@ -2,6 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import styles from "./Button.module.scss";
 import clsx from "clsx";
+import { LoaderCircle } from "lucide-react";
 
 const buttonVariants = cva(styles.button, {
   variants: {
@@ -28,8 +29,8 @@ export type ButtonProps = {
 export default function Button({
   children,
   className,
-  loading,
   variant,
+  loading,
   ...props
 }: ButtonProps) {
   return (
@@ -37,7 +38,8 @@ export default function Button({
       {...props}
       className={clsx(buttonVariants({ variant, loading, className }))}
     >
-      {children}
+      {loading && <LoaderCircle className={styles.loader} />}
+      <span className={styles.buttonContent}>{children}</span>
     </button>
   );
 }
