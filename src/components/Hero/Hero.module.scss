@@ -22,3 +22,12 @@
 .callToAction {
     text-transform: lowercase;
 }
+
+@media (max-width: 768px) {
+    .heroWrapper {
+        height: 260px;
+    }
+    .title {
+        font-size: var(--hero-mobile-size);
+    }
+}

@@ -10,6 +10,7 @@
         no-repeat var(--neutral-white);
     background-size: 1.2em;
     background-position: center right 0.5em;
+
     &::placeholder {
         color: var(--input-placeholder);
     }
@@ -27,6 +28,7 @@
         clip-path: polygon(100% 0%, 0 0%, 50% 100%);
     }
     &:focus:focus-visible {
+        z-index: 1;
         outline: 2px solid var(--primary-opacity);
     }
 }

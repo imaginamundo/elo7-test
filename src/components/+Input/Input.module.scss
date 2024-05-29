@@ -3,6 +3,7 @@
     height: var(--input-height);
     border-radius: var(--input-border-radius);
     border: var(--input-border);
+    background: var(--neutral-white);
     font-size: 0.8em;
     &::placeholder {
         color: var(--input-placeholder);
@@ -11,6 +12,7 @@
         color: var(--input-placeholder);
     }
     &:focus:focus-visible {
+        z-index: 1;
         outline: 2px solid var(--primary-opacity);
     }
 }

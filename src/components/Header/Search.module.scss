@@ -13,10 +13,25 @@ input.searchInput {
     border-radius: 0;
     border-left: none;
     border-right: none;
+    padding-right: 0;
 }
 button.searchButton {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border: var(--input-border);
     border-left: none;
+}
+
+@media (max-width: 768px) {
+    select.kindSelect {
+        width: 70px;
+        min-width: 0;
+        padding: 0;
+        color: transparent;
+        background-position: center;
+        border-right: none;
+    }
+    input.searchInput {
+        padding-left: 0;
+    }
 }

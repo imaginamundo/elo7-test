@@ -3,13 +3,19 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    gap: var(--space-m);
+    gap: var(--space-xs);
     flex-shrink: 0;
+    font-size: 0.75em;
 }
 
 .login {
     display: flex;
     align-items: center;
     gap: var(--space-xxs);
-    font-size: 0.75em;
+}
+
+@media (max-width: 768px) {
+    .loginText {
+        display: none;
+    }
 }

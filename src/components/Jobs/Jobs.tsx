@@ -22,6 +22,7 @@ export default function Jobs({ jobs }: { jobs: GetJobsResponse }) {
           value={filter}
           type="search"
           placeholder="Nome da vaga…"
+          className={styles.jobsSearch}
           onChange={(e) => {
             setFilter(e.target.value);
           }}

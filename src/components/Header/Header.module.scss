@@ -1,5 +1,6 @@
 .header {
     position: sticky;
+    z-index: 100;
     top: 0;
     box-shadow:
         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px,
@@ -15,7 +16,6 @@
     grid-template-areas: "logo search user";
     flex-wrap: wrap;
     column-gap: var(--space-xxxl);
-    row-gap: var(--space-m);
     justify-content: space-between;
 }
 

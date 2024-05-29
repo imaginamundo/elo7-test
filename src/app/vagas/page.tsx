@@ -26,7 +26,7 @@ export default async function Home() {
         <Testimonial {...testimonialProps} />
         <Slider {...sliderProps} />
         <Highlights {...highlightProps} />
-        <ImageSpacer {...imageSpacerProps} className="negative-mt-xxxl" />
+        <ImageSpacer {...imageSpacerProps} className={styles.removeGap} />
         <Jobs jobs={jobs} />
       </article>
     </main>

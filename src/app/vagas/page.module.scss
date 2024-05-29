@@ -3,3 +3,16 @@
     flex-direction: column;
     gap: var(--space-xxxl);
 }
+
+.removeGap {
+    margin-top: calc(var(--space-xxxl) * -1);
+}
+
+@media (max-width: 768px) {
+    .gaps {
+        gap: var(--space-xxl);
+    }
+    .removeGap {
+        margin-top: calc(var(--space-xxl) * -1);
+    }
+}

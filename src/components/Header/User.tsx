@@ -1,5 +1,4 @@
 import { ShoppingCart, CircleUser } from "lucide-react";
-import Link from "next/link";
 import Button from "@/components/+Button/Button";
 
 import styles from "./User.module.scss";
@@ -10,9 +9,10 @@ export default function Use() {
       <Button variant="subtle">
         <ShoppingCart />
       </Button>
-      <Link href="/" className={styles.login}>
-        <CircleUser /> Entre ou cadastre-se
-      </Link>
+      <Button className={styles.login} variant="subtle">
+        <CircleUser />{" "}
+        <span className={styles.loginText}>Entre ou cadastre-se</span>
+      </Button>
     </div>
   );
 }

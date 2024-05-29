@@ -27,9 +27,10 @@
 }
 
 @media (max-width: 768px) {
-    .testimonialImageWrapper {
-        flex: auto;
+    .testimonial {
+        padding-block: var(--space-xl);
     }
+    .testimonialImageWrapper,
     .testimonialTextWrapper {
         flex: auto;
     }

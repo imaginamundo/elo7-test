@@ -27,7 +27,7 @@ export default function Testimonial({
           <h3 className={clsx("mb-m", styles.testimonialSubtitle)}>
             {subtitle}
           </h3>
-          <p>{testimonial}</p>
+          <p className="font-s-mobile">{testimonial}</p>
         </div>
       </div>
     </div>

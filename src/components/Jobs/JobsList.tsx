@@ -71,9 +71,9 @@ export default function JobsList({
           <Fragment key={`jobs-${category}`}>
             <p
               key={`job-category-${category}`}
-              className={clsx("mt-s", styles.jobCategory)}
+              className={clsx("mt-m", styles.jobCategory)}
             >
-              {category}
+              <strong>{category}</strong>
             </p>
             <ul className={styles.jobs}>
               {jobs.map((job) => {

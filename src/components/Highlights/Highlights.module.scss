@@ -8,7 +8,8 @@
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--space-m);
+    column-gap: var(--space-m);
+    row-gap: var(--space-xxl);
 }
 
 @media (max-width: 768px) {
@@ -33,4 +34,10 @@
     background: var(--primary);
     border-radius: 50%;
     margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+    .highlights {
+        padding-block: var(--space-xxl);
+    }
 }

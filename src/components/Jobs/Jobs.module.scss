@@ -1,5 +1,13 @@
 .jobsHeader {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: var(--space-l);
     justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .jobsSearch {
+        width: 100%;
+    }
 }

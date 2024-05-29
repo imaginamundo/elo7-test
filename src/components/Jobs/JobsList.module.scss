@@ -15,12 +15,20 @@
 
 .jobLink {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-block: var(--space-l);
+    gap: var(--space-xs);
     text-transform: capitalize;
 }
 
 .jobLocation {
     color: var(--text);
     text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+    .jobLocation {
+        width: 100%;
+    }
 }

@@ -33,7 +33,7 @@ export default function Hero({
         </div>
       </div>
       <div className={clsx("container", styles.heroDescription)}>
-        <p>{description}</p>
+        <p className="font-s-mobile">{description}</p>
         <hr />
         <div className="text-center">
           <Link href={callToActionHref} className={styles.callToAction}>
