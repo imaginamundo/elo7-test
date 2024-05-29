@@ -34,7 +34,7 @@ export default async function Home() {
 }
 
 export const metadata: Metadata = {
-  title: "elo7 · Trabalhe no elo7",
+  title: "Trabalhe no elo7",
   description: "...",
 };
 

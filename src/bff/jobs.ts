@@ -21,7 +21,14 @@ export async function getJobs({
 } = {}): Promise<GetJobsResponse> {
   let jobs;
   try {
-    jobs = (await request<JobsResponse>(process.env.JOBS_ENDPOING)).jobs;
+    jobs = (
+      await request<JobsResponse>(process.env.JOBS_ENDPOING, {
+        cache: "force-cache",
+        next: {
+          revalidate: 60 * 60, // 1 hour
+        },
+      })
+    ).jobs;
   } catch (err) {
     if (err instanceof ResponseError) {
       return {
