@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import styles from "./Highlights.module.scss";
 
-export type HighlightProps = {
+export type HighlightsProps = {
   highlights: {
     image: ImageProps;
     title: string;
@@ -17,7 +17,7 @@ export type HighlightProps = {
   }[];
 };
 
-export default function Highlights({ highlights }: HighlightProps) {
+export default function Highlights({ highlights }: HighlightsProps) {
   return (
     <div className={styles.highlights}>
       <div className={clsx("container", styles.highlightsWrapper)}>

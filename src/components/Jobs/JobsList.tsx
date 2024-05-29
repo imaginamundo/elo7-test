@@ -135,8 +135,6 @@ function parseJobs(jobs: GetJobsResponse, filter = ""): ParsedJobs {
   }
 
   for (let i = 0; i < jobsToParse.length; i++) {
-    if (!jobsToParse[i].is_active) continue;
-
     const type = jobsToParse[i].type;
     if (!parsedJobs[type]) parsedJobs[type] = [];
 
@@ -155,7 +153,7 @@ type ParsedJobs = {
   } & ParsedLocation)[];
 };
 
-function parseLocation(location?: string): ParsedLocation {
+function parseLocation(location: string | null): ParsedLocation {
   if (!location) return { remote: true };
   const [city, _, country] = location.split(",");
 

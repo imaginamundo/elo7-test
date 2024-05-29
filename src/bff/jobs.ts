@@ -8,7 +8,7 @@ type JobsResponse = {
     title: string;
     type: string;
     level: string;
-    location?: string;
+    location: string | null;
     is_active: boolean;
   }[];
 };
@@ -23,7 +23,6 @@ export async function getJobs({
   try {
     jobs = (
       await request<JobsResponse>(process.env.JOBS_ENDPOING, {
-        cache: "force-cache",
         next: {
           revalidate: 60 * 60, // 1 hour
         },
@@ -47,12 +46,11 @@ export async function getJobs({
     };
   }
 
-  let total = 0;
-  for (let i = 0; i < jobs.length; i++) {
-    if (jobs[i].is_active) total += 1;
-  }
+  const filteredJobs = filterJobs(jobs);
 
-  jobs = sortJobs(jobs);
+  const total = filteredJobs.total;
+
+  jobs = sortJobs(filteredJobs.jobs);
   jobs = paginateJobs({ jobs, page, limit });
 
   return {
@@ -74,9 +72,24 @@ export type GetJobsResponse =
       jobs: [];
       page: number;
       total: number;
+      limit: number;
       message: string;
       status?: number;
     };
+
+function filterJobs(jobs: JobsResponse["jobs"]) {
+  let total = 0;
+
+  jobs = jobs.filter((job) => {
+    if (job.is_active) total += 1;
+    return job.is_active;
+  });
+
+  return {
+    total,
+    jobs,
+  };
+}
 
 function paginateJobs({
   jobs,

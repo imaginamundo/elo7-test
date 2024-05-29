@@ -1,9 +1,9 @@
-import { expect, test, describe, vi, beforeAll, afterAll } from "vitest";
+import { expect, test, describe, vi, beforeAll } from "vitest";
 import { ResponseError } from "@/utils/error";
 import { getJobs } from "./jobs";
 import * as request from "@/utils/request";
 
-describe("job bff return", () => {
+describe("getJob bff return", () => {
   beforeAll(() => {
     vi.spyOn(request, "default").mockResolvedValue(apiMock);
   });
@@ -11,25 +11,59 @@ describe("job bff return", () => {
   test("should hide inactive job", async () => {
     const jobs = await getJobs();
 
-    expect("controle internos" in jobs).toBeFalsy();
-    expect("financeiro" in jobs).toBeTruthy();
-    expect("engenharia" in jobs).toBeTruthy();
+    expect(jobs.jobs.length).toBe(2);
   });
 
-  test("should get city and country", async () => {
+  test("should setup pagination", async () => {
     const jobs = await getJobs();
 
-    expect(jobs.financeiro[0].city).toBe("são paulo");
-    expect(jobs.financeiro[0].country).toBe("brasil");
-    expect(jobs.financeiro[0].remote).toBe(false);
-
-    expect(jobs.engenharia[0].city).toBe(undefined);
-    expect(jobs.engenharia[0].country).toBe(undefined);
-    expect(jobs.engenharia[0].remote).toBe(true);
+    expect(jobs.total).toBe(2);
+    expect(jobs.page).toBe(0);
+    expect(jobs.limit).toBe(5);
   });
 });
 
-describe("job bff errors", () => {
+describe("getJob bff pagination", () => {
+  beforeAll(() => {
+    const apiMockWithMoreJobs = {
+      jobs: [
+        ...apiMock.jobs,
+        ...apiMock.jobs,
+        ...apiMock.jobs,
+        ...apiMock.jobs,
+      ],
+    };
+    vi.spyOn(request, "default").mockResolvedValue(apiMockWithMoreJobs);
+  });
+  test("should paginate", async () => {
+    const jobs = await getJobs();
+
+    expect(jobs.page).toBe(0);
+    expect(jobs.limit).toBe(5);
+    expect(jobs.total).toBe(8);
+    expect(jobs.jobs.length).toBe(5);
+  });
+
+  test("should return specific page", async () => {
+    const jobs = await getJobs({ page: 1 });
+
+    expect(jobs.page).toBe(1);
+    expect(jobs.limit).toBe(5);
+    expect(jobs.total).toBe(8);
+    expect(jobs.jobs.length).toBe(3);
+  });
+
+  test("should return specific page limit", async () => {
+    const jobs = await getJobs({ page: 1, limit: 2 });
+
+    expect(jobs.page).toBe(1);
+    expect(jobs.limit).toBe(2);
+    expect(jobs.total).toBe(8);
+    expect(jobs.jobs.length).toBe(2);
+  });
+});
+
+describe("getJob bff errors", () => {
   test("should return error message when request fail", async () => {
     vi.spyOn(request, "default").mockRejectedValue(
       new ResponseError("Ops", 500, new Response()),

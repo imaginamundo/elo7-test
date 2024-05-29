@@ -5,7 +5,7 @@ import Testimonial, {
 } from "@/components/Testimonial/Testimonial";
 import Slider, { type SliderProps } from "@/components/Slider/Slider";
 import Highlights, {
-  type HighlightProps,
+  type HighlightsProps,
 } from "@/components/Highlights/Highlights";
 import ImageSpacer, {
   type ImageSpacerProps,
@@ -94,7 +94,7 @@ const sliderProps: SliderProps = {
   ],
 };
 
-const highlightProps: HighlightProps = {
+const highlightProps: HighlightsProps = {
   highlights: [
     {
       image: {

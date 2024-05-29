@@ -7,5 +7,6 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths(), magicalSvg({ target: "react" })],
   test: {
     environment: "jsdom",
+    exclude: ["./tests-e2e", "./node_modules"],
   },
 });
