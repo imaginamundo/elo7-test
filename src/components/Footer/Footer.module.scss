@@ -43,3 +43,10 @@
 .footerNavItem {
     font-size: 0.75em;
 }
+
+@media (max-width: 768px) {
+    .footer,
+    .footerNav {
+        grid-template-columns: 1fr;
+    }
+}

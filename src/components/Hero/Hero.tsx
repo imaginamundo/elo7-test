@@ -25,6 +25,7 @@ export default function Hero({
         style={{
           background: background || "var(--primary)",
           backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="container">

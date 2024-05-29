@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={clsx("container", styles.headerWrapper)}>
-        <h1>
+        <h1 className={styles.logo}>
           <Link href="/">
             <Image
               src="/elo7-logo.svg"

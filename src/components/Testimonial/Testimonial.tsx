@@ -19,10 +19,10 @@ export default function Testimonial({
   return (
     <div className={styles.testimonial}>
       <div className={clsx("container", styles.testimonialWrapper)}>
-        <figure>
+        <figure className={styles.testimonialImageWrapper}>
           <Image {...image} className={styles.testimonialImage} />
         </figure>
-        <div>
+        <div className={styles.testimonialTextWrapper}>
           <h2>{title}</h2>
           <h3 className={clsx("mb-m", styles.testimonialSubtitle)}>
             {subtitle}

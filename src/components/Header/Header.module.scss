@@ -9,8 +9,32 @@
 }
 
 .headerWrapper {
-    display: flex;
+    display: grid;
     align-items: center;
-    gap: var(--space-xxxl);
+    grid-template-columns: auto 2fr auto;
+    grid-template-areas: "logo search user";
+    flex-wrap: wrap;
+    column-gap: var(--space-xxxl);
+    row-gap: var(--space-m);
     justify-content: space-between;
+}
+
+.logo {
+    grid-area: logo;
+}
+
+@media (max-width: 1024px) {
+    .headerWrapper {
+        column-gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .headerWrapper {
+        grid-template-columns: auto auto;
+        column-gap: var(--space-m);
+        grid-template-areas:
+            "logo user"
+            "search search";
+    }
 }
