@@ -1,5 +1,5 @@
 import { ResponseError } from "@/utils/error";
-import log from "@/utils/log";
+import { logError } from "@/utils/log";
 
 let timeout = 3000;
 
@@ -16,7 +16,7 @@ export default async function request<ResponseType>(
   const response = await fetch(url, config);
 
   if (!response.ok) {
-    log(response);
+    logError(response);
 
     throw new ResponseError(response.statusText, response.status, response);
   }

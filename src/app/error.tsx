@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Button from "@/components/+Button/Button";
-import log from "@/utils/log";
+import { logError } from "@/utils/log";
 
 export default function Error({
   error,
@@ -12,7 +12,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    log(error);
+    logError(error);
   }, [error]);
 
   return (
