@@ -23,6 +23,14 @@ To see more information about unit tests on this application visit [Vitest Docum
 To run end to end tests you can run:
 
 ```bash
+npm run build
+
+npm run start
+```
+
+Then on new tab:
+
+```bash
 npm run test:e2e
 ```
 
@@ -45,4 +53,4 @@ To see more information about end to end tests on this application visit [Vitest
 - [x] Setup 404 page;
 - [x] Setup sentry;
 - [x] Setup G. A.;
-- [ ] Tests everywhere!
+- [x] Tests everywhere!

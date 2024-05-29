@@ -34,6 +34,7 @@ export async function getJobs({
         jobs: [],
         page: 0,
         total: 0,
+        limit,
         message: err.message,
         status: err.status,
       };
@@ -42,6 +43,7 @@ export async function getJobs({
       jobs: [],
       page: 0,
       total: 0,
+      limit,
       message: "Something unexpected happened",
     };
   }
