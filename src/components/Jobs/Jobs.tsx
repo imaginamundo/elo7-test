@@ -2,6 +2,7 @@
 
 import Input from "@/components/+Input/Input";
 import JobsList from "./JobsList";
+import SearchIcon from "@/icons/search.svg?url";
 
 import { useState } from "react";
 
@@ -23,6 +24,11 @@ export default function Jobs({ jobs }: { jobs: GetJobsResponse }) {
           type="search"
           placeholder="Nome da vaga…"
           className={styles.jobsSearch}
+          style={{
+            background: `url(${SearchIcon.src}) no-repeat var(--neutral-white)`,
+            backgroundPosition: "center right 0.5em",
+            paddingRight: "2.5em",
+          }}
           onChange={(e) => {
             setFilter(e.target.value);
           }}

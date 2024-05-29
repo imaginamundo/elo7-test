@@ -44,5 +44,5 @@ To see more information about end to end tests on this application visit [Vitest
 - [x] Setup Error pages;
 - [x] Setup 404 page;
 - [x] Setup sentry;
-- [ ] Setup G. A.;
+- [x] Setup G. A.;
 - [ ] Tests everywhere!
