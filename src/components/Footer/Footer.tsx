@@ -1,5 +1,8 @@
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
+import { dataLayer, events } from "@/utils/analytics";
 
 import Image from "next/image";
 
@@ -35,7 +38,19 @@ export default function Footer() {
                       key={`menu-footer-${title}-${item.label}`}
                       className={styles.footerNavItem}
                     >
-                      <Link href={item.href}>{item.label}</Link>
+                      <Link
+                        href={item.href}
+                        onClick={() =>
+                          dataLayer({
+                            event: events.nav,
+                            location: "footer",
+                            label: item.label,
+                            target: item.href,
+                          })
+                        }
+                      >
+                        {item.label}
+                      </Link>
                     </li>
                   );
                 })}

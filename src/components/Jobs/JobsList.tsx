@@ -2,6 +2,7 @@ import { GetJobsResponse, getJobs } from "@/bff/jobs";
 
 import Link from "next/link";
 import clsx from "clsx";
+import { dataLayer, events } from "@/utils/analytics";
 
 import styles from "./JobsList.module.scss";
 import {
@@ -47,6 +48,7 @@ export default function JobsList({
   if ("message" in jobs) return <p>Erro ao buscar vagas :(</p>;
 
   const loadMore = async () => {
+    dataLayer({ event: events.cta, label: "Carregar mais…" });
     setLoading(true);
     const newJobs = await getJobs({ page: page + 1 });
 

@@ -1,7 +1,9 @@
 import localFont from "next/font/local";
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import Analytics from "@/providers/Analytics";
 import "./globals.scss";
 
 const museo = localFont({
@@ -32,6 +34,8 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      <Analytics />
     </html>
   );
 }

@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import styles from "@/components/Hero/Hero.module.scss";
 import ArrowRight from "@/icons/arrow-right.svg";
 import clsx from "clsx";
+
+import { dataLayer } from "@/utils/analytics";
 
 export type HeroProps = {
   title: string;
@@ -36,7 +40,17 @@ export default function Hero({
         <p className="font-s-mobile">{description}</p>
         <hr />
         <div className="text-center">
-          <Link href={callToActionHref} className={styles.callToAction}>
+          <Link
+            href={callToActionHref}
+            className={styles.callToAction}
+            onClick={() =>
+              dataLayer({
+                event: "cta",
+                target: callToActionHref,
+                label: callToAction,
+              })
+            }
+          >
             {callToAction}
             <ArrowRight />
           </Link>
