@@ -1,11 +1,13 @@
-import { expect, test, describe, vi, beforeAll } from "vitest";
+import { expect, test, describe, vi, beforeEach, beforeAll } from "vitest";
 import { ResponseError } from "@/utils/error";
 import { getJobs } from "./jobs";
 import * as request from "@/utils/request";
 
 describe("getJob bff return", () => {
-  beforeAll(() => {
-    vi.spyOn(request, "default").mockResolvedValue(apiMock);
+  beforeEach(() => {
+    vi.spyOn(request, "default").mockResolvedValue(
+      JSON.parse(JSON.stringify(apiMock)),
+    );
   });
 
   test("should hide inactive job", async () => {
@@ -20,6 +22,13 @@ describe("getJob bff return", () => {
     expect(jobs.total).toBe(2);
     expect(jobs.page).toBe(0);
     expect(jobs.limit).toBe(5);
+  });
+
+  test("should parse location", async () => {
+    const jobs = await getJobs();
+
+    expect(jobs.jobs[0].location).toBe("Remoto");
+    expect(jobs.jobs[1].location).toBe("São Paulo, Brasil");
   });
 });
 

@@ -83,14 +83,7 @@ export default function JobsList({
                   <li key={`job-${job.title}`} className={styles.job}>
                     <Link href="#" className={styles.jobLink}>
                       {job.title}
-                      {job.remote && (
-                        <span className={styles.jobLocation}>Remoto</span>
-                      )}
-                      {!job.remote && (
-                        <span className={styles.jobLocation}>
-                          {job.city}, {job.country}
-                        </span>
-                      )}
+                      <span className={styles.jobLocation}>{job.location}</span>
                     </Link>
                   </li>
                 );
@@ -140,7 +133,7 @@ function parseJobs(jobs: GetJobsResponse, filter = ""): ParsedJobs {
 
     parsedJobs[type].push({
       title: jobsToParse[i].title,
-      ...parseLocation(jobsToParse[i].location),
+      location: jobsToParse[i].location,
     });
   }
 
@@ -151,17 +144,4 @@ type ParsedJobs = {
   [key: string]: ({
     title: string;
   } & ParsedLocation)[];
-};
-
-function parseLocation(location: string | null): ParsedLocation {
-  if (!location) return { remote: true };
-  const [city, _, country] = location.split(",");
-
-  return { city: city.trim(), country: country.trim(), remote: false };
-}
-
-type ParsedLocation = {
-  city?: string;
-  country?: string;
-  remote: boolean;
 };

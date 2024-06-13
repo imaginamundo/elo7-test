@@ -2,6 +2,7 @@
 
 import request from "@/utils/request";
 import { ResponseError } from "@/utils/error";
+import { capitalize } from "@/utils/text";
 
 type JobsResponse = {
   jobs: {
@@ -54,6 +55,7 @@ export async function getJobs({
 
   jobs = sortJobs(filteredJobs.jobs);
   jobs = paginateJobs({ jobs, page, limit });
+  jobs = parseJobLocation(jobs);
 
   return {
     jobs,
@@ -63,9 +65,17 @@ export async function getJobs({
   };
 }
 
+type ParsedJob = {
+  title: string;
+  type: string;
+  level: string;
+  location: string;
+  is_active: boolean;
+};
+
 export type GetJobsResponse =
   | {
-      jobs: JobsResponse["jobs"];
+      jobs: ParsedJob[];
       page: number;
       limit: number;
       total: number;
@@ -110,5 +120,17 @@ function paginateJobs({
 function sortJobs(jobs: JobsResponse["jobs"]) {
   return jobs.sort((a, b) => {
     return a.type.localeCompare(b.type);
+  });
+}
+
+function parseJobLocation(jobs: JobsResponse["jobs"]) {
+  return jobs.map((job) => {
+    if (job.location) {
+      const [city, _, country] = job.location.split(", ");
+      job.location = capitalize(`${city}, ${country}`);
+    } else {
+      job.location = "Remoto";
+    }
+    return job as ParsedJob;
   });
 }
